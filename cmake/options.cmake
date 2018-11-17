@@ -1,0 +1,23 @@
+include_directories(${CMAKE_BINARY_DIR})
+MESSAGE(STATUS "CMAKE_BINARY_DIR: ${CMAKE_BINARY_DIR}")
+include_directories(${CMAKE_SOURCE_DIR})
+MESSAGE(STATUS "CMAKE_SOURCE_DIR: ${CMAKE_SOURCE_DIR}")
+IF (WINDOWS) 
+    INCLUDE(${CZ_ROOT_PATH}/config-cmake/option.cmake)
+    SET(CMAKE_DEBUG_POSTFIX "_debug")
+    SET(CMAKE_RELEASE_POSTFIX "_release")
+    SET(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
+    SET(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+ELSEIF (UNIX)
+    set(CMAKE_CXX_FLAGS "-std=c++11 -o2 -fPIC")
+    find_package(OpenMP QUIET)
+    if (OPENMP_FOUND)
+      message("-- Building with OpenMP.")
+      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}")
+      set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OpenMP_C_FLAGS}")
+    endif (OPENMP_FOUND)
+ELSE ()
+
+ENDIF ()
+
+
