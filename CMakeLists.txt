@@ -14,5 +14,5 @@ set(CZ_ROOT_PATH ${CMAKE_CURRENT_SOURCE_DIR}/../../coding)
 include(cmake/3rdparty.cmake)
 include(cmake/options.cmake)
 
-
-add_subdirectory(study)
+add_subdirectory(virtual)
+add_subdirectory(test)

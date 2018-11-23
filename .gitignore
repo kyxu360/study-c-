@@ -1,0 +1,14 @@
+build/*
+output/*
+*~
+*.user
+data/*
+.idea/*
+cmake-build-debug/
+.vscode/
+bin/*
+*.swp
+vs2013/*
+vs2015/*
+vs2017/*
+linux/*
